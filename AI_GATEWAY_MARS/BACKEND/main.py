@@ -1,10 +1,11 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from extractor import extract_text
+from ai_compare import compare_contracts
 
 app = FastAPI()
 
-# Autoriser le frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -13,21 +14,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Route qui affiche ton frontend
 @app.get("/")
 def read_index():
     return FileResponse("../FRONTEND/index.html")
 
-
 @app.post("/compare")
 async def compare(contract1: UploadFile = File(...), contract2: UploadFile = File(...)):
 
-    text1 = (await contract1.read()).decode("utf-8")
-    text2 = (await contract2.read()).decode("utf-8")
+    # Extraction texte
+    try:
+        text1 = extract_text(contract1)
+        text2 = extract_text(contract2)
+    except Exception as e:
+        return {"differences": [], "error": f"Impossible d'extraire le texte : {str(e)}"}
 
-    # Pour l'instant on renvoie les textes reçus
-    return {
-        "contract1_text": text1,
-        "contract2_text": text2,
-        "differences": []
-    }
+    # Appel Mistral
+    result = compare_contracts(text1, text2)
+
+    # ⚡ Assurer que le champ differences existe pour le frontend
+    if "differences" not in result:
+        result["differences"] = []
+
+    return result
