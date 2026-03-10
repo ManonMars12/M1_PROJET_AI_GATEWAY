@@ -21,7 +21,7 @@
         Nous ne pensons pas réaliser l’outil pour des documents formatés différemment, les deux versions seront similaires. Nous ne relèverons pas les différences non significatives comme les fautes de frappe. 
 
 ### Choix techniques 
-        Au niveau des choix techniques, nous allons choisir de réaliser l’interface pour l’utilisateur en HTML/CSS et éventuellement JS si besoin car cela m’apparait comme le plus simple pour réaliser un front end. Le back end sera réalisé en Python (Flask) car Python est un langage très flexible et qui comporte une grande quantité de librairies, notamment des librairies d’océrisation qui pourront sûrement s’avérer pratiques. Nous utiliserons sûrement un appel à une api d’IA générative. 
+        Au niveau des choix techniques, nous allons choisir de réaliser l’interface pour l’utilisateur en HTML/CSS et éventuellement JS si besoin car cela m’apparait comme le plus simple pour réaliser un front end. Le back end sera réalisé en Python (fast API) car Python est un langage très flexible et qui comporte une grande quantité de librairies, notamment des librairies d’océrisation qui pourront sûrement s’avérer pratiques. Nous utiliserons sûrement un appel à une api d’IA générative. 
 
 ### Contraintes techniques 
 
