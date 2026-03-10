@@ -13,6 +13,7 @@
 
 ### Fonctionnalités supplémentaires si le temps le permet 
 
+        - Générer un mail de résumé
         - Éventuellement une possibilité d'accepter ou de refuser les changements 
         - Éventuellement une proposition de mail à envoyer à la personne responsable de l'édition du contrat suivant l'acceptation ou le refus des changements  
 
