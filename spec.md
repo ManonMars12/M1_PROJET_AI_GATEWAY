@@ -10,7 +10,6 @@
         - Pouvoir déposer ses deux documents de manière pratique (drag and drop par exemple) 
         - Alerte sur les données modifiées 
         - Mise en avant claire de clauses abusives ou illégales 
-        - Classement de l'importance des modifications de la plus à la moins "grave"
 
 ### Fonctionnalités supplémentaires si le temps le permet 
 
