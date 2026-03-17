@@ -21,18 +21,18 @@ def read_index():
 @app.post("/compare")
 async def compare(contract1: UploadFile = File(...), contract2: UploadFile = File(...)):
 
-    # Extraction texte
+    # Extraction texte 
     try:
         text1 = extract_text(contract1)
         text2 = extract_text(contract2)
     except Exception as e:
         return {"differences": [], "error": f"Impossible d'extraire le texte : {str(e)}"}
 
-    # Appel Mistral
+    # Appel API Mistral
     result = compare_contracts(text1, text2)
 
-    # ⚡ Assurer que le champ differences existe pour le frontend
+    # Vérification existence champ differences frontend
     if "differences" not in result:
         result["differences"] = []
 
-    return result
+    return result 
