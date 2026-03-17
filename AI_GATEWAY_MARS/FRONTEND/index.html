@@ -29,7 +29,6 @@ tailwind.config = {
 
   <div class="grid md:grid-cols-2 gap-6">
 
-    <!-- CONTRAT 1 -->
     <div id="dropzone1" class="bg-white border-2 border-dashed border-pink-300 rounded-2xl p-10 text-center cursor-pointer hover:border-pink-500 transition shadow-sm">
       <div class="flex flex-col items-center gap-3">
         <div class="text-4xl">📄</div>
@@ -40,7 +39,6 @@ tailwind.config = {
       <input type="file" id="file1" class="hidden"/>
     </div>
 
-    <!-- CONTRAT 2 -->
     <div id="dropzone2" class="bg-white border-2 border-dashed border-pink-300 rounded-2xl p-10 text-center cursor-pointer hover:border-pink-500 transition shadow-sm">
       <div class="flex flex-col items-center gap-3">
         <div class="text-4xl">📄</div>
@@ -60,7 +58,6 @@ tailwind.config = {
     </button>
   </div>
 
-  <!-- RESULTATS -->
   <div id="results" class="hidden mt-12 bg-white rounded-2xl shadow-lg p-8">
 
     <h2 class="text-2xl font-semibold text-pink-600 mb-6">Résultats de comparaison</h2>
@@ -81,7 +78,6 @@ tailwind.config = {
       </table>
     </div>
 
-    <!-- Boutons générer emails -->
     <div class="flex gap-4 mt-4">
       <button id="generateEmailBtn"
               class="bg-pink-500 hover:bg-pink-800 text-white px-6 py-2 rounded-xl font-semibold shadow-lg transition transform hover:scale-105 hidden">
@@ -97,7 +93,6 @@ tailwind.config = {
 
 </div>
 
-<!-- LOADING -->
 <div id="loadingScreen" class="fixed inset-0 bg-pink-50 flex flex-col items-center justify-center hidden z-50">
   <div class="bg-white p-10 rounded-2xl shadow-xl w-96 text-center">
     <h2 class="text-xl font-semibold text-pink-600 mb-6">🔍 Analyse des contrats en cours</h2>
@@ -217,7 +212,6 @@ document.getElementById("compareBtn").addEventListener("click", async () => {
     document.getElementById("generateEmailBtn").classList.remove("hidden")
     document.getElementById("generateResponseEmailBtn").classList.remove("hidden")
 
-    // Gestion accept/reject pour les lignes non-illégales
     document.querySelectorAll(".acceptBtn").forEach(btn => {
       btn.onclick = () => {
         const cell = btn.parentElement
@@ -231,7 +225,6 @@ document.getElementById("compareBtn").addEventListener("click", async () => {
       }
     })
 
-    // Email de résumé
     document.getElementById("generateEmailBtn").onclick = () => {
       let emailBody = "Bonjour,%0D%0A%0D%0AVoici le résumé des différences entre les contrats :%0D%0A%0D%0A"
       data.differences.forEach(d => {
@@ -241,7 +234,6 @@ document.getElementById("compareBtn").addEventListener("click", async () => {
       window.location.href = `mailto:?subject=Analyse des contrats&body=${emailBody}`
     }
 
-    // Email de réponse avec état
     document.getElementById("generateResponseEmailBtn").onclick = () => {
       const rows = document.querySelectorAll("#resultTable tr")
       let emailBody = "Bonjour,%0D%0A%0D%0AVoici mon retour sur les modifications :%0D%0A%0D%0A"
